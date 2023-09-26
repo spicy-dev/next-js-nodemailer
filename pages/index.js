@@ -13,6 +13,9 @@ import {
 import { useState } from "react";
 import { sendContactForm } from "../lib/api";
 
+import Script from 'next/script'
+const GTM_ID = 'GTM-5CRSZN9X';
+
 const initValues = { name: "", email: "", phone: "", company: "", message: "" };
 
 const initState = { isLoading: false, error: "", values: initValues };
@@ -63,8 +66,8 @@ export default function Home() {
   return (
 
     <>
-    <style>
-      {`
+      <style>
+        {`
       html,body {
         background:#fff;
       }
@@ -132,107 +135,107 @@ export default function Home() {
           font-size:16px;
         }
       }
-        
+
       `}
-    </style>
-    <div className="if-form-inner" style={{background: "#ac2025 !important",width:"100%"}}>
-      <Container maxW="450px" mt={12}>
-      {error && (
-        <Text color="white.300" my={4} fontSize="xl">
-          {error}
-        </Text>
-      )}
+      </style>
+      <div className="if-form-inner" style={{ background: "#ac2025 !important", width: "100%" }}>
+        <Container maxW="450px" mt={12}>
+          {error && (
+            <Text color="white.300" my={4} fontSize="xl">
+              {error}
+            </Text>
+          )}
 
-      <FormControl isRequired isInvalid={touched.name && !values.name} mb={4}>
-        <Input
-          type="text"
-          name="name"
-          errorBorderColor="white.300"
-          value={values.name}
-          onChange={handleChange}
-          onBlur={onBlur}
-          placeholder="Name"
-        />
-        <FormErrorMessage>Required</FormErrorMessage>
-      </FormControl>
-
-
-
-      <FormControl isRequired isInvalid={touched.email && !values.email} mb={4}>
-        <Input
-          type="email"
-          name="email"
-          errorBorderColor="white.300"
-          value={values.email}
-          onChange={handleChange}
-          onBlur={onBlur}
-          placeholder="Email"
-        />
-        <FormErrorMessage>Required</FormErrorMessage>
-      </FormControl>
+          <FormControl isRequired isInvalid={touched.name && !values.name} mb={4}>
+            <Input
+              type="text"
+              name="name"
+              errorBorderColor="white.300"
+              value={values.name}
+              onChange={handleChange}
+              onBlur={onBlur}
+              placeholder="Name"
+            />
+            <FormErrorMessage>Required</FormErrorMessage>
+          </FormControl>
 
 
 
-    <FormControl mb={4} isRequired isInvalid={touched.phone && !values.phone} >
-  <Input
-    type="text"
-    name="phone"
-    errorBorderColor="white.300"
-    value={values.phone}
-    onChange={handleChange}
-    onBlur={onBlur}
-    placeholder="Phone"
-  />
-  <FormErrorMessage>Required</FormErrorMessage>
-</FormControl>
+          <FormControl isRequired isInvalid={touched.email && !values.email} mb={4}>
+            <Input
+              type="email"
+              name="email"
+              errorBorderColor="white.300"
+              value={values.email}
+              onChange={handleChange}
+              onBlur={onBlur}
+              placeholder="Email"
+            />
+            <FormErrorMessage>Required</FormErrorMessage>
+          </FormControl>
 
 
 
-  <FormControl mb={4} isRequired isInvalid={touched.company && !values.company} >
-        <Input
-          type="text"
-          name="company"
-          errorBorderColor="white.300"
-          value={values.company}
-          onChange={handleChange}
-          onBlur={onBlur}
-          placeholder="Company"
-        />
-        <FormErrorMessage>Required</FormErrorMessage>
-      </FormControl>
+          <FormControl mb={4} isRequired isInvalid={touched.phone && !values.phone} >
+            <Input
+              type="text"
+              name="phone"
+              errorBorderColor="white.300"
+              value={values.phone}
+              onChange={handleChange}
+              onBlur={onBlur}
+              placeholder="Phone"
+            />
+            <FormErrorMessage>Required</FormErrorMessage>
+          </FormControl>
+
+
+
+          <FormControl mb={4} isRequired isInvalid={touched.company && !values.company} >
+            <Input
+              type="text"
+              name="company"
+              errorBorderColor="white.300"
+              value={values.company}
+              onChange={handleChange}
+              onBlur={onBlur}
+              placeholder="Company"
+            />
+            <FormErrorMessage>Required</FormErrorMessage>
+          </FormControl>
 
 
 
 
-      <FormControl mb={4} isRequired isInvalid={touched.message && !values.message} >
-        <Textarea
-          type="text"
-          name="message"
-          rows={4}
-          errorBorderColor="white.300"
-          value={values.message}
-          onChange={handleChange}
-          onBlur={onBlur}
-          placeholder="Message"
-        />
-        <FormErrorMessage>Required</FormErrorMessage>
-      </FormControl>
+          <FormControl mb={4} isRequired isInvalid={touched.message && !values.message} >
+            <Textarea
+              type="text"
+              name="message"
+              rows={4}
+              errorBorderColor="white.300"
+              value={values.message}
+              onChange={handleChange}
+              onBlur={onBlur}
+              placeholder="Message"
+            />
+            <FormErrorMessage>Required</FormErrorMessage>
+          </FormControl>
 
-      <div className="btn-send" style={{textAlign:"center", marginTop:"50px"}}>
-      <Button
-        variant="outline"
-        colorScheme="blue"
-        isLoading={isLoading}
-        disabled={
-          !values.name || !values.email || !values.phone || !values.company || !values.message
-        }
-        onClick={onSubmit}
-      >
-        SEND
-      </Button>
+          <div className="btn-send" style={{ textAlign: "center", marginTop: "50px" }}>
+            <Button
+              variant="outline"
+              colorScheme="blue"
+              isLoading={isLoading}
+              disabled={
+                !values.name || !values.email || !values.phone || !values.company || !values.message
+              }
+              onClick={onSubmit}
+            >
+              SEND
+            </Button>
+          </div>
+        </Container>
       </div>
-    </Container>
-    </div>
     </>
   );
 }
