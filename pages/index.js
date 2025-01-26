@@ -12,7 +12,6 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { sendContactForm } from "../lib/api";
-import { useRouter } from "next/router";
 
 import Script from 'next/script'
 const GTM_ID = 'GTM-5CRSZN9X';
@@ -28,7 +27,6 @@ export default function Home() {
 
   const { values, isLoading, error } = state;
 
-  const router = useRouter();
 
   const onBlur = ({ target }) =>
     setTouched((prev) => ({ ...prev, [target.name]: true }));
@@ -59,8 +57,13 @@ export default function Home() {
         position: "top",
       });
 
-       // Redirect to /thankyou page
-    router.push("/thankyou");
+
+      if (window.top) {
+        window.top.location.href = "/thankyou"; // Redirect the parent frame
+      } else {
+        window.location.href = "/thankyou"; // Fallback in case it's not in an iframe
+      }
+      
 
     } catch (error) {
       setState((prev) => ({
