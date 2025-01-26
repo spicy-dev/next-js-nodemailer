@@ -60,7 +60,7 @@ export default function Home() {
       });
 
        // Redirect to /thankyou page
-    router.push("http://localhost:3001/thankyou");
+    router.push("/thankyou");
 
     } catch (error) {
       setState((prev) => ({
