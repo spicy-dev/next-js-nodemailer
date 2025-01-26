@@ -59,11 +59,11 @@ export default function Home() {
 
 
       if (window.top) {
-        window.top.location.href = "/thankyou"; // Redirect the parent frame
+        window.top.location.href = "https://pixeloneevent.com/thankyou"; // Redirect the parent frame
       } else {
-        window.location.href = "/thankyou"; // Fallback in case it's not in an iframe
+        window.location.href = "https://pixeloneevent.com/thankyou"; // Fallback in case it's not in an iframe
       }
-      
+
 
     } catch (error) {
       setState((prev) => ({
