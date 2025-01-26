@@ -12,6 +12,7 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { sendContactForm } from "../lib/api";
+import { useRouter } from "next/router";
 
 import Script from 'next/script'
 const GTM_ID = 'GTM-5CRSZN9X';
@@ -27,6 +28,8 @@ export default function Home() {
 
   const { values, isLoading, error } = state;
 
+  const router = useRouter();
+
   const onBlur = ({ target }) =>
     setTouched((prev) => ({ ...prev, [target.name]: true }));
 
@@ -40,6 +43,7 @@ export default function Home() {
     }));
 
   const onSubmit = async () => {
+
     setState((prev) => ({
       ...prev,
       isLoading: true,
@@ -54,6 +58,10 @@ export default function Home() {
         duration: 2000,
         position: "top",
       });
+
+       // Redirect to /thankyou page
+    router.push("http://localhost:3001/thankyou");
+
     } catch (error) {
       setState((prev) => ({
         ...prev,
